@@ -1,0 +1,33 @@
+# Application dependencies
+
+require:
+    - play
+    - org.jodd -> jodd-bean 3.4.5
+    - org.jodd -> jodd-http 3.4.5
+    - org.jodd -> jodd-core 3.4.5
+    - com.jhw -> ojdbc14 14
+    - commons-net -> commons-net 3.3
+    - org.apache.poi -> poi 3.15
+    - org.apache.poi -> poi-ooxml 3.15
+    - org.apache.commons -> commons-collections4 4.1
+    - org.apache.poi -> poi-examples 3.15
+    - org.apache.poi -> poi-excelant 3.15
+    - org.apache.poi -> poi-ooxml-schemas 3.15
+    - org.apache.poi -> poi-scratchpad 3.15
+    - org.apache.xmlbeans -> xmlbeans 2.6.0
+
+repositories:
+
+    - mavenRepository:
+        type:       iBiblio
+        root:       "http://58.58.180.104:8082/nexus/content/groups/public/"
+        contains:
+            - org.jodd -> *
+            - com.jhw -> *
+            - org.jodd -> *
+            - com.jhw -> *
+            - commons-net -> *
+            - org.apache.poi -> *
+            - org.apache.commons -> *
+            - org.apache.xmlbeans -> *
+        m2compatible: true

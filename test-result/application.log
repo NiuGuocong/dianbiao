@@ -1,0 +1,60 @@
+18 四月 2017 16:33:22,016 INFO  ~ Starting E:\2017\dianbiao\.
+18 四月 2017 16:33:22,371 WARN  ~ You're running Play! in DEV mode
+18 四月 2017 16:33:22,719 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
+18 四月 2017 16:33:35,191 INFO  ~ Connected to jdbc:mysql://192.168.90.155/shdhv1?amp;characterEncoding=utf8&useUnicode=true&connectionCollation=utf8_general_ci&amp;autoReconnect=yes&characterEncoding=UTF-8 for default
+18 四月 2017 16:33:35,804 INFO  ~ Application 'dianbiao' is now started !
+18 四月 2017 17:05:00,101 INFO  ~ Restart: 1 classes changed (and HotSwap is not enabled)
+18 四月 2017 17:05:00,281 ERROR ~ 
+
+@73lb7ggg8
+Error during job execution (service.job.SnapshotJob)
+
+Execution exception (In /app/models/Snapshot.java around line 105)
+PersistenceException occurred : org.hibernate.PropertyAccessException: could not get a field value by reflection getter of models.Snapshot.a
+
+play.exceptions.JavaExecutionException: org.hibernate.PropertyAccessException: could not get a field value by reflection getter of models.Snapshot.a
+	at play.jobs.Job.call(Job.java:225)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: javax.persistence.PersistenceException: org.hibernate.PropertyAccessException: could not get a field value by reflection getter of models.Snapshot.a
+	at org.hibernate.ejb.AbstractEntityManagerImpl.convert(AbstractEntityManagerImpl.java:1387)
+	at org.hibernate.ejb.AbstractEntityManagerImpl.convert(AbstractEntityManagerImpl.java:1310)
+	at org.hibernate.ejb.AbstractEntityManagerImpl.convert(AbstractEntityManagerImpl.java:1316)
+	at org.hibernate.ejb.AbstractEntityManagerImpl.persist(AbstractEntityManagerImpl.java:881)
+	at play.db.jpa.JPABase._save(JPABase.java:35)
+	at play.db.jpa.GenericModel.save(GenericModel.java:232)
+	at models.Snapshot.task(Snapshot.java:105)
+	at service.job.SnapshotJob.doJob(SnapshotJob.java:23)
+	at play.jobs.Job.doJobWithResult(Job.java:54)
+	at play.jobs.Job$2.apply(Job.java:208)
+	at play.db.jpa.JPA.withTransaction(JPA.java:253)
+	at play.db.jpa.JPA.withinFilter(JPA.java:212)
+	at play.db.jpa.JPAPlugin$TransactionalFilter.withinFilter(JPAPlugin.java:292)
+	at play.jobs.Job.withinFilter(Job.java:185)
+	at play.jobs.Job.call(Job.java:204)
+	... 6 more
+Caused by: org.hibernate.PropertyAccessException: could not get a field value by reflection getter of models.Snapshot.a
+	at org.hibernate.property.DirectPropertyAccessor$DirectGetter.get(DirectPropertyAccessor.java:62)
+	at org.hibernate.property.DirectPropertyAccessor$DirectGetter.getForInsert(DirectPropertyAccessor.java:70)
+	at org.hibernate.tuple.entity.AbstractEntityTuplizer.getPropertyValuesToInsert(AbstractEntityTuplizer.java:624)
+	at org.hibernate.tuple.entity.PojoEntityTuplizer.getPropertyValuesToInsert(PojoEntityTuplizer.java:405)
+	at org.hibernate.persister.entity.AbstractEntityPersister.getPropertyValuesToInsert(AbstractEntityPersister.java:4621)
+	at org.hibernate.event.internal.AbstractSaveEventListener.performSaveOrReplicate(AbstractSaveEventListener.java:265)
+	at org.hibernate.event.internal.AbstractSaveEventListener.performSave(AbstractSaveEventListener.java:192)
+	at org.hibernate.event.internal.AbstractSaveEventListener.saveWithGeneratedId(AbstractSaveEventListener.java:125)
+	at org.hibernate.ejb.event.EJB3PersistEventListener.saveWithGeneratedId(EJB3PersistEventListener.java:78)
+	at org.hibernate.event.internal.DefaultPersistEventListener.entityIsTransient(DefaultPersistEventListener.java:208)
+	at org.hibernate.event.internal.DefaultPersistEventListener.onPersist(DefaultPersistEventListener.java:151)
+	at org.hibernate.event.internal.DefaultPersistEventListener.onPersist(DefaultPersistEventListener.java:78)
+	at org.hibernate.internal.SessionImpl.firePersist(SessionImpl.java:772)
+	at org.hibernate.internal.SessionImpl.persist(SessionImpl.java:746)
+	at org.hibernate.internal.SessionImpl.persist(SessionImpl.java:750)
+	at org.hibernate.ejb.AbstractEntityManagerImpl.persist(AbstractEntityManagerImpl.java:875)
+	... 17 more
+Caused by: java.lang.IllegalArgumentException: Can not set double field models.Snapshot.a to models.Snapshot
+	at org.hibernate.property.DirectPropertyAccessor$DirectGetter.get(DirectPropertyAccessor.java:59)
+	... 32 more
